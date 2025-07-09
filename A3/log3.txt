@@ -1,0 +1,10 @@
+Server connected
+Client connected
+Received: uuid=181643d1-9911-4b08-8434-bce837d0bc24, flag=0, less, 0
+Message ignored.
+Sent: uuid=7876d553-70a5-4760-82da-2593560d7a44, flag=0
+Received: uuid=7876d553-70a5-4760-82da-2593560d7a44, flag=0, same, 0
+Leader is decided to 7876d553-70a5-4760-82da-2593560d7a44
+Sent: uuid=7876d553-70a5-4760-82da-2593560d7a44, flag=1
+Received: uuid=7876d553-70a5-4760-82da-2593560d7a44, flag=1, same, 1, leader=7876d553-70a5-4760-82da-2593560d7a44
+Leader message completed a full ring. Stopping forwarding.
