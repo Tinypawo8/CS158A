@@ -39,6 +39,7 @@ class Node:
             lines = f.read().splitlines()
         self.server_ip, self.server_port = lines[0].split(',')
         self.client_ip, self.client_port = lines[1].split(',')
+        
         #Convert string into number for port variables
         self.server_port = int(self.server_port)
         self.client_port = int(self.client_port)
@@ -53,8 +54,6 @@ class Node:
     #create a function to hadle connections
     def handle_connection(self, conn):
         buffer = ""
-        print(f"🧪 Buffer before loop: {repr(buffer)}")
-        print(f"🧪 Contains newline? {'\\n' in buffer}")
         while True:
             try:
                 data = conn.recv(1024).decode()
@@ -73,11 +72,14 @@ class Node:
     def start_server(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind((self.server_ip, self.server_port))
-        s.listen(1)
-        conn, _ = s.accept()
-        self.server_conn = conn
-        self.log("Server connected")
-        self.handle_connection(conn)
+        s.listen()
+        self.log("Server listening...")
+        
+        #changed from debugged.Use one time socket instea of persistent socket in A3
+        #Since my classmate was sending in that way
+        while True:
+            conn, _ = s.accept()
+            threading.Thread(target=self.handle_connection, args=(conn,), daemon=True).start()
 
     #Connect with client
     def connect_to_client(self):
@@ -93,11 +95,17 @@ class Node:
     #Send message and log the messge sent
     def send_message(self, message):
         try:
-            msg_json = message.to_json()
-            self.client_conn.sendall(msg_json.encode())
-            self.log(f"Sent: uuid={message.uuid}, flag={message.flag}")
+                msg_text = message.to_json()
+
+                #changed from debugged.Use one time socket instea of persistent socket in A3
+                #Since my classmate was sending in that way
+                with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                    s.connect((self.client_ip, self.client_port))
+                    s.sendall(msg_text.encode())
+                    time.sleep(0.1)
+                self.log(f"Sent: uuid={message.uuid}, flag={message.flag}")
         except Exception as e:
-            self.log(f"Send failed: {e}")
+            self.log(f"Send failed to {self.client_ip}:{self.client_port} — {e}")
 
     def process_message(self, message):
         msg_uuid = uuid.UUID(message.uuid)

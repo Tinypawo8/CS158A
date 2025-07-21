@@ -1,0 +1,12 @@
+Server listening...
+Received: uuid=c8eb0692-dfda-4e35-8a60-90e9494911ad, flag=0, less, 0
+Message ignored.
+Client connected
+Received: uuid=44e7ab1f-a19a-4df1-bfb5-e795e756447b, flag=0, less, 0
+Message ignored.
+Received: uuid=e337f44e-b53b-4fd2-8c26-23edb0c7641f, flag=0, same, 0
+Leader is decided to e337f44e-b53b-4fd2-8c26-23edb0c7641f
+Received: uuid=e337f44e-b53b-4fd2-8c26-23edb0c7641f, flag=1, same, 1, leader=e337f44e-b53b-4fd2-8c26-23edb0c7641f
+Leader message completed a full ring. Stopping forwarding.
+Sent: uuid=e337f44e-b53b-4fd2-8c26-23edb0c7641f, flag=0
+Sent: uuid=e337f44e-b53b-4fd2-8c26-23edb0c7641f, flag=1

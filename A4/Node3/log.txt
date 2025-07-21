@@ -1,0 +1,7 @@
+Server listening...
+Client connected
+Sent: uuid=c8eb0692-dfda-4e35-8a60-90e9494911ad, flag=0
+Received: uuid=e337f44e-b53b-4fd2-8c26-23edb0c7641f, flag=0, greater, 0
+Received: uuid=e337f44e-b53b-4fd2-8c26-23edb0c7641f, flag=1, greater, 0
+Sent: uuid=e337f44e-b53b-4fd2-8c26-23edb0c7641f, flag=0
+Sent: uuid=e337f44e-b53b-4fd2-8c26-23edb0c7641f, flag=1
