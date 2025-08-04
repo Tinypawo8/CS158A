@@ -1,9 +1,5 @@
 import ssl
 import socket
-import threading
-import sys
-
-lock = threading.Lock()
 
 def connect_to_google():
         HOST = 'www.google.com'
